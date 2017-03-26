@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--PreferenceCategory android:title="@string/appnametool">
+        <Preference
+            android:summary="@string/version_code"
+            android:title="@string/version"
+            android:key="ver"/>
+        <Preference
+            android:summary="@string/email"
+            android:title="@string/bug">
+        </Preference>
+    </PreferenceCategory-->
+
+    <PreferenceCategory android:title="Settings">
+        <Preference
+            android:summary="Dollar Sit Amet"
+            android:title="Lorem Ipsum">
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Application Info">
+        <Preference
+            android:summary="1.0"
+            android:title="Version">
+        </Preference>
+        <Preference
+            android:summary="Tap here to check"
+            android:title="Used Library">
+        </Preference>
+        <Preference
+            android:summary="Link"
+            android:title="Github">
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Developer Info">
+        <Preference
+            android:summary="Developer / UI Designer"
+            android:title="Lee Yulwon">
+        </Preference>
+        <Preference
+            android:summary="sterddev@icloud.com"
+            android:title="Email">
+        </Preference>
+        <Preference
+            android:summary="sterddev"
+            android:title="Facebook">
+        </Preference>
+    </PreferenceCategory>
+
+
+
+</PreferenceScreen>
