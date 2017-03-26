@@ -29,8 +29,10 @@
             android:title="Used Library">
         </Preference>
         <Preference
-            android:summary="Link"
+            android:summary="github.com/sterddev/Honbab/"
             android:title="Github">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://github.com/sterddev/Honbab/" />
         </Preference>
     </PreferenceCategory>
 
@@ -42,10 +44,15 @@
         <Preference
             android:summary="sterddev@icloud.com"
             android:title="Email">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="mailto:sterddev@icloud.com" />
         </Preference>
         <Preference
-            android:summary="sterddev"
+            android:summary="www.facebook.com/sterddev"
             android:title="Facebook">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://www.facebook.com/sterddev" />
         </Preference>
     </PreferenceCategory>
 

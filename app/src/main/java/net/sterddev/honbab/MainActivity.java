@@ -1,5 +1,6 @@
 package net.sterddev.honbab;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -17,8 +18,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements
     FloatingActionButton fab;
     double lat, lng;
     String CURR = "Dashboard";
+    static View viewPos = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -104,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements
         fragmentTransaction.add(R.id.frag, new DashboardFragment());
         fragmentTransaction.commit();
         navigation.setSelectedItemId(R.id.navigation_dashboard);
+        viewPos = findViewById(R.id.cl);
         loc = (TextView) findViewById(R.id.loc);
         loc.setText("Finding Location");
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -114,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements
 
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(10 * 1000)        // 10 seconds, anim_in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, anim_in milliseconds
+                .setInterval(10000)
+                .setFastestInterval(1000);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -128,13 +133,15 @@ public class MainActivity extends AppCompatActivity implements
                     intent.putExtra("lng", lng);
                     startActivity(intent);
                 } else {
-                    final View viewPos = findViewById(R.id.cl);
-                    Snackbar.make(viewPos, "Invalid Settings. Choose more than one item.", Snackbar.LENGTH_LONG).show();
+                    makeSnackBar("Invalid Settings. Choose more than one item.", Snackbar.LENGTH_LONG);
                 }
             }
         });
     }
 
+    public static void makeSnackBar(String str, int length){
+        Snackbar.make(viewPos, str, length).show();
+    }
     public static String getAddress(Context mContext, double lat, double lng) {
         String nowAddress ="Can't find current location.";
         Geocoder geocoder = new Geocoder(mContext, Locale.KOREA);
@@ -165,7 +172,6 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        //Now lets connect to the API
         mGoogleApiClient.connect();
     }
 
@@ -174,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onPause();
         Log.v(this.getClass().getSimpleName(), "onPause()");
 
-        //Disconnect from API onPause()
         if (mGoogleApiClient.isConnected()) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
             mGoogleApiClient.disconnect();
@@ -188,16 +193,11 @@ public class MainActivity extends AppCompatActivity implements
         mLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 
         if (mLocation != null) {
-            //currentLatitude = mLocation.getLatitude();
-            //currentLongitude = mLocation.getLongitude();
-            //toolbar.setTitle(getAddress(this, mLocation.getLatitude(), mLocation.getLongitude()));
             loc.setText(getAddress(this, mLocation.getLatitude(), mLocation.getLongitude()));
-            //Toast.makeText(this, currentLatitude + " WORKS " + currentLongitude + "", Toast.LENGTH_LONG).show();
             lat = mLocation.getLatitude();
             lng = mLocation.getLongitude();
         } else {
-            loc.setText("위치를 찾을 수 없습니다");
-            //Toast.makeText(this, "???", Toast.LENGTH_LONG).show();
+            loc.setText("Can't find current location.");
         }
     }
 
@@ -207,29 +207,13 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-            /*
-             * Google Play services can resolve some errors it detects.
-             * If the error has a resolution, try sending an Intent to
-             * start a Google Play services activity that can resolve
-             * error.
-             */
         if (connectionResult.hasResolution()) {
             try {
-                // Start an Activity that tries to resolve the error
                 connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
-                    /*
-                     * Thrown if Google Play services canceled the original
-                     * PendingIntent
-                     */
             } catch (IntentSender.SendIntentException e) {
-                // Log the error
                 e.printStackTrace();
             }
         } else {
-                /*
-                 * If no resolution is available, display a dialog to the
-                 * user with the error.
-                 */
             Log.e("Error", "Location services connection failed with code " + connectionResult.getErrorCode());
         }
     }

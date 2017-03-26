@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="24dp"
         app:errorTextAppearance="@style/error_appearance"
@@ -20,7 +19,8 @@
             android:id="@+id/textinput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:maxLength="25"/>
     </android.support.design.widget.TextInputLayout>
 
 

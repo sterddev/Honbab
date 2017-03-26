@@ -35,14 +35,17 @@ public class DashboardFragment extends Fragment {
     private Context mContext;
     EditText edt;
     TextInputLayout edl;
+    View v;
+    MainActivity obj;
         @Override
         public void onAttach(final Activity activity) {
             super.onAttach(activity);
             mContext = activity;
+            obj = (MainActivity) activity;
         }
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.fragment_dashboard, container, false);
+            v = inflater.inflate(R.layout.fragment_dashboard, container, false);
             mcd = (CardView) v.findViewById(R.id.cv1); bgk = (CardView) v.findViewById(R.id.cv2);
             kfc = (CardView) v.findViewById(R.id.cv3); sbw = (CardView) v.findViewById(R.id.cv4);
             kkd = (CardView) v.findViewById(R.id.cv5); stb = (CardView) v.findViewById(R.id.cv6);
@@ -78,7 +81,6 @@ public class DashboardFragment extends Fragment {
                     });
                 }
             });
-
             mcd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -217,6 +219,7 @@ public class DashboardFragment extends Fragment {
                     mDialog.dismiss();
                     mDialog = null;
                 }
+                MainActivity.makeSnackBar("Suggestion Sent Successfully", Snackbar.LENGTH_SHORT);
             }
         }
 
