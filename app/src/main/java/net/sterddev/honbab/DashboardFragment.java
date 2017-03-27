@@ -193,7 +193,7 @@ public class DashboardFragment extends Fragment {
             @Override
             protected Boolean doInBackground(String... params) {
                 try {
-                    HttpPost postRequest = new HttpPost("https://script.google.com/macros/s/AKfycbwqveqhkcVEf06uINZw6SQ9-LO2V62W6krVYGi2f6sX1Yspiio/exec");
+                    HttpPost postRequest = new HttpPost(Constants.GOOGLE_DRIVE_API_KEY);
 
                     Vector<NameValuePair> nameValue = new Vector<>();
                     nameValue.add(new BasicNameValuePair("sheet_name", "Brand"));
