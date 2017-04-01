@@ -49,8 +49,8 @@ public class DashboardFragment extends Fragment {
             mcd = (CardView) v.findViewById(R.id.cv1); bgk = (CardView) v.findViewById(R.id.cv2);
             kfc = (CardView) v.findViewById(R.id.cv3); sbw = (CardView) v.findViewById(R.id.cv4);
             kkd = (CardView) v.findViewById(R.id.cv5); stb = (CardView) v.findViewById(R.id.cv6);
-            gtf = (CardView) v.findViewById(R.id.cv5); cfu = (CardView) v.findViewById(R.id.cv6);
-            sev = (CardView) v.findViewById(R.id.cv5);
+            gtf = (CardView) v.findViewById(R.id.cv7); cfu = (CardView) v.findViewById(R.id.cv8);
+            sev = (CardView) v.findViewById(R.id.cv9);
             suggest = (CardView) v.findViewById(R.id.cv10);
 
             mcdst = false; bgkst = false; kfcst = false; sbwst = false; kkdst = false; stbst = false;
