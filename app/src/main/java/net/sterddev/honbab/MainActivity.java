@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -127,10 +128,14 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
                 if(DashboardFragment.cmcd() || DashboardFragment.cbgk() || DashboardFragment.ckfc()
-                        || DashboardFragment.csbw() || DashboardFragment.ckkd() || DashboardFragment.cstb()) {
+                        || DashboardFragment.csbw() || DashboardFragment.ckkd() || DashboardFragment.cstb()
+                        || DashboardFragment.cgtf() || DashboardFragment.ccfu() || DashboardFragment.csev()) {
                     Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                     intent.putExtra("lat", lat);
                     intent.putExtra("lng", lng);
+                    intent.putExtra("mcd", DashboardFragment.cmcd()); intent.putExtra("bgk", DashboardFragment.cbgk()); intent.putExtra("kfc", DashboardFragment.ckfc());
+                    intent.putExtra("sbw", DashboardFragment.csbw()); intent.putExtra("kkd", DashboardFragment.ckkd()); intent.putExtra("stb", DashboardFragment.cstb());
+                    intent.putExtra("gtf", DashboardFragment.cgtf()); intent.putExtra("cfu", DashboardFragment.ccfu()); intent.putExtra("sev", DashboardFragment.csev());
                     startActivity(intent);
                 } else {
                     makeSnackBar("Invalid Settings. Choose more than one item.", Snackbar.LENGTH_LONG);

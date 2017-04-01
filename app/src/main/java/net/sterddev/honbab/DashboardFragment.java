@@ -30,8 +30,8 @@ import java.util.Vector;
 
 public class DashboardFragment extends Fragment {
 
-    static Boolean mcdst = false, bgkst = false, kfcst = false, sbwst = false, kkdst = false, stbst = false;
-    CardView mcd, bgk, kfc, sbw, kkd, stb, suggest;
+    static Boolean mcdst = false, bgkst = false, kfcst = false, sbwst = false, kkdst = false, stbst = false, gtfst = false, cfust = false, sevst = false;
+    CardView mcd, bgk, kfc, sbw, kkd, stb, gtf, cfu, sev, suggest;
     private Context mContext;
     EditText edt;
     TextInputLayout edl;
@@ -49,7 +49,9 @@ public class DashboardFragment extends Fragment {
             mcd = (CardView) v.findViewById(R.id.cv1); bgk = (CardView) v.findViewById(R.id.cv2);
             kfc = (CardView) v.findViewById(R.id.cv3); sbw = (CardView) v.findViewById(R.id.cv4);
             kkd = (CardView) v.findViewById(R.id.cv5); stb = (CardView) v.findViewById(R.id.cv6);
-            suggest = (CardView) v.findViewById(R.id.cv7);
+            gtf = (CardView) v.findViewById(R.id.cv5); cfu = (CardView) v.findViewById(R.id.cv6);
+            sev = (CardView) v.findViewById(R.id.cv5);
+            suggest = (CardView) v.findViewById(R.id.cv10);
 
             mcdst = false; bgkst = false; kfcst = false; sbwst = false; kkdst = false; stbst = false;
             suggest.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +161,45 @@ public class DashboardFragment extends Fragment {
                 }
             });
 
+            gtf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(gtfst) {
+                        gtfst = false;
+                        gtf.setBackgroundResource(R.drawable.card_unselected);
+                    } else {
+                        gtfst = true;
+                        gtf.setBackgroundResource(R.drawable.card_selected);
+                    }
+                }
+            });
+
+            cfu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(cfust) {
+                        cfust = false;
+                        cfu.setBackgroundResource(R.drawable.card_unselected);
+                    } else {
+                        cfust = true;
+                        cfu.setBackgroundResource(R.drawable.card_selected);
+                    }
+                }
+            });
+
+            sev.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(sevst) {
+                        sevst = false;
+                        sev.setBackgroundResource(R.drawable.card_unselected);
+                    } else {
+                        sevst = true;
+                        sev.setBackgroundResource(R.drawable.card_selected);
+                    }
+                }
+            });
+
             return v;
         }
 
@@ -174,6 +215,12 @@ public class DashboardFragment extends Fragment {
         static boolean ckkd(){ return kkdst; }
         @org.jetbrains.annotations.Contract(pure = true)
         static boolean cstb(){ return stbst; }
+        @org.jetbrains.annotations.Contract(pure = true)
+        static boolean cgtf(){ return gtfst; }
+        @org.jetbrains.annotations.Contract(pure = true)
+        static boolean ccfu(){ return cfust; }
+        @org.jetbrains.annotations.Contract(pure = true)
+        static boolean csev(){ return sevst; }
 
 
         ProgressDialog mDialog;

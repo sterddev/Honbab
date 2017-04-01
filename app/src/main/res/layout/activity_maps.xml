@@ -21,7 +21,7 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <RelativeLayout
+    <net.daum.mf.map.api.MapView
         android:id="@+id/map_view"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
