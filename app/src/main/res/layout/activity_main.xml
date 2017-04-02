@@ -50,6 +50,10 @@
             android:layout_marginBottom="?android:attr/actionBarSize"
             android:id="@+id/cl"
             android:background="#222">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frag"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_marginBottom="16dp"
@@ -60,10 +64,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             app:srcCompat="@drawable/ic_search" />
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/frag"/>
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.BottomNavigationView

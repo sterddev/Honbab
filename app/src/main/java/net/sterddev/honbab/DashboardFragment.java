@@ -53,6 +53,11 @@ public class DashboardFragment extends Fragment {
             sev = (CardView) v.findViewById(R.id.cv9);
             suggest = (CardView) v.findViewById(R.id.cv10);
 
+            mcd.setBackgroundResource(R.drawable.card_unselected); bgk.setBackgroundResource(R.drawable.card_unselected);
+            kfc.setBackgroundResource(R.drawable.card_unselected); sbw.setBackgroundResource(R.drawable.card_unselected);
+            kkd.setBackgroundResource(R.drawable.card_unselected); stb.setBackgroundResource(R.drawable.card_unselected);
+            gtf.setBackgroundResource(R.drawable.card_unselected); cfu.setBackgroundResource(R.drawable.card_unselected);
+            sev.setBackgroundResource(R.drawable.card_unselected);
             mcdst = false; bgkst = false; kfcst = false; sbwst = false; kkdst = false; stbst = false;
             suggest.setOnClickListener(new View.OnClickListener() {
                 @Override

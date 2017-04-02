@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/mcl"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -198,7 +202,7 @@
                     <ImageView
                         android:layout_width="32dp" android:layout_height="32dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="20dp" android:scaleType="fitCenter" android:src="@drawable/ic_add" />
+                        android:layout_margin="20dp" android:scaleType="fitCenter" app:srcCompat="@drawable/ic_add" />
                     <TextView
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical" android:fontFamily="sans-serif-condensed"
@@ -208,7 +212,8 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
-                android:layout_weight="1"/>
+                android:layout_height="16dp"/>
         </LinearLayout>
+
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
