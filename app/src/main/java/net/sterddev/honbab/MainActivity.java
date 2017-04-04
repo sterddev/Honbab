@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements
                         CURR = "Favourite";
                         fragmentTransaction.replace(R.id.frag, new FavouriteFragment());
                         fab.hide();
+                        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                        startActivity(intent);
                     }
                     break;
                 case R.id.navigation_settings:
@@ -150,12 +152,10 @@ public class MainActivity extends AppCompatActivity implements
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
-                Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-                Toast.makeText(MainActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
             }
 
 
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements
 
         new TedPermission(this)
                 .setPermissionListener(permissionlistener)
-                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setDeniedMessage("If you reject permission, you can not use this service\n\nPlease turn on permissions at [Permission]")
                 .setPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
                 .check();
 
