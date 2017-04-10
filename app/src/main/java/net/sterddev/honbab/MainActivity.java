@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity implements
                         CURR = "Favourite";
                         fragmentTransaction.replace(R.id.frag, new FavouriteFragment());
                         fab.hide();
-                        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                        startActivity(intent);
                     }
                     break;
                 case R.id.navigation_settings:
