@@ -18,8 +18,8 @@ import android.widget.Toast;
 
 public class DetailActivity extends AppCompatActivity {
 
-    String title, address, newAddress, phone, category;
-    TextView at, nt, pt, ct, dt;
+    String title, address, phone, category;
+    TextView at, pt, ct, dt;
     double distance;
     boolean toggle = false;
     Toolbar toolbar;
@@ -34,20 +34,17 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         title = intent.getExtras().getString("title");
         address = intent.getExtras().getString("address");
-        newAddress = intent.getExtras().getString("newaddress");
         phone = intent.getExtras().getString("phone");
         category = intent.getExtras().getString("category");
         distance = intent.getExtras().getDouble("distance");
 
         dt = (TextView) findViewById(R.id.distance);
         at = (TextView) findViewById(R.id.address);
-        nt = (TextView) findViewById(R.id.newaddress);
         pt = (TextView) findViewById(R.id.phone);
         ct = (TextView) findViewById(R.id.category);
 
         dt.setText("거리 : " + Double.toString(distance));
         at.setText("주소 : " + address);
-        nt.setText("도로명 주소 : " + newAddress);
         pt.setText("전화 번호 : " + phone);
         ct.setText("분류 : " + category);
         toolbar.setTitle(title);
