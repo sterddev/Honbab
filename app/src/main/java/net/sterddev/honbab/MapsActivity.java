@@ -176,24 +176,10 @@ public class MapsActivity extends AppCompatActivity implements MapView.MapViewEv
     @Override
     public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {
         Item item = mTagItemMap.get(mapPOIItem.getTag());
-        /*StringBuilder sb = new StringBuilder();
-        sb.append("title=").append(item.title).append("\n");
-        sb.append("imageUrl=").append(item.imageUrl).append("\n");
-        sb.append("address=").append(item.address).append("\n");
-        sb.append("newAddress=").append(item.newAddress).append("\n");
-        sb.append("zipcode=").append(item.zipcode).append("\n");
-        sb.append("phone=").append(item.phone).append("\n");
-        sb.append("category=").append(item.category).append("\n");
-        sb.append("longitude=").append(item.longitude).append("\n");
-        sb.append("latitude=").append(item.latitude).append("\n");
-        sb.append("distance=").append(item.distance).append("\n");
-        sb.append("direction=").append(item.direction).append("\n");
-        Toast.makeText(this, sb.toString(), Toast.LENGTH_SHORT).show();*/
         Intent intent = new Intent(MapsActivity.this, DetailActivity.class);
         intent.putExtra("title", item.title);
         intent.putExtra("distance", item.distance);
         intent.putExtra("address", item.address);
-        intent.putExtra("newadress", item.newAddress);
         intent.putExtra("phone", item.phone);
         intent.putExtra("category", item.category);
         startActivity(intent);

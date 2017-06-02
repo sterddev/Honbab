@@ -120,8 +120,8 @@ public class Searcher {
 		try {
 			URL url = new URL(urlString);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setReadTimeout(4000 /* milliseconds */);
-			conn.setConnectTimeout(7000 /* milliseconds */);
+			conn.setReadTimeout(4000);
+			conn.setConnectTimeout(7000);
 			conn.setRequestMethod("GET");
 			conn.setDoInput(true);
 			if (header != null) {

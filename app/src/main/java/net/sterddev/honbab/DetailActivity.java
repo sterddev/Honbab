@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DetailActivity extends AppCompatActivity {
 
     String title, address, phone, category;
@@ -24,12 +28,18 @@ public class DetailActivity extends AppCompatActivity {
     boolean toggle = false;
     Toolbar toolbar;
     private Menu menu;
+    SQLiteHelper SQLite;
+    long now = System.currentTimeMillis();
+    Date date = new Date(now);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        SQLite = new SQLiteHelper(getApplicationContext(), "favourite.db", null, 1);
 
         Intent intent = getIntent();
         title = intent.getExtras().getString("title");
@@ -71,13 +81,17 @@ public class DetailActivity extends AppCompatActivity {
 
             case R.id.action_favourite:
                 if(toggle){
+                    Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String s = formatter.format(date);
                     menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_star_border));
                     menu.getItem(0).setTitle("Add as Favourite");
                     toggle = false;
+                    SQLite.insert(s, title, address);
                 } else {
                     menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_favourite_black_24dp));
                     menu.getItem(0).setTitle("Remove From Favourite");
                     toggle = true;
+                    SQLite.delete(title);
                 }
                 break;
             default:
